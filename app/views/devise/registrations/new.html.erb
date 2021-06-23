@@ -3,7 +3,11 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+<<<<<<< Updated upstream
   <div class="field">
+=======
+<div class="field">
+>>>>>>> Stashed changes
     <%= f.label :nickname %><br />
     <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
   </div>
@@ -26,6 +30,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+<<<<<<< Updated upstream
   <div class="field">
     <%= f.label :age %><br />
     <%= f.text_field :age, autofocus: true, autocomplete: "age" %>
@@ -39,6 +44,22 @@
     <%= f.radio_button :gender, :woman %>
 </div>
 
+=======
+
+<div class="sex-field">
+    <%= f.label :Sex %><br />
+    <%= f.label :man  %>
+    <%= f.radio_button :sex, :man %>
+    <%= f.label :woman  %>
+    <%= f.radio_button :sex, :woman %>
+</div>
+
+<div class="field">
+    <%= f.label :age %><br />
+    <%= f.text_field :age, autofocus: true, autocomplete: "age" %>
+  </div>
+
+>>>>>>> Stashed changes
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
