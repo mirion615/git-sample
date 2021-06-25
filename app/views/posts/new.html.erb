@@ -1,0 +1,19 @@
+<%# 投稿ページです %>
+<div class="contents">
+  <div class="content">
+    <h3>投稿する</h3>
+      <%= form_with(model: @post, local: true) do |f| %>
+      <div class="post-field">
+        <%= f.text_field :text, placeholder:"本文" %>
+        <div class="click-upload">
+          <p>クリックしてファイルをアップロード</p>
+          <%= f.file_field :image, id:"item-image" %>
+        </div>
+        <%= f.text_field :name, placeholder:"タグ" %>
+      </div>
+      <div class="submit-post">
+        <%= f.submit "投稿する"%>
+      </div>
+      <% end %>
+  </div>
+</div>
