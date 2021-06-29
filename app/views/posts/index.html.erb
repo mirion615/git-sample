@@ -5,9 +5,36 @@
    <%= current_user.nickname %>さん
      <li><%= link_to "マイページ", root_path, class: "nickname" %></li>
       <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"logout" %></li>
+      <li><%= link_to "新規投稿", new_post_path %></li>
                  <% else %>
                       <li><%= link_to 'ログイン', new_user_session_path, class:"sign-in"%></li>
                       <li><%= link_to '新規登録', new_user_registration_path, class:"sign-up"%></li> 
 <% end %>
 
-<%= link_to "新規投稿", new_post_path %>
+
+
+<div class="d-flex align-items-center">
+    <h1>投稿一覧</h1>
+</div>
+<table class="table table-bordered border-primary table-hover table-sm posts_table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">募集内容</th>
+      <th scope="col">投稿者</th>
+      <th scope="col">投稿日</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+            <td><%= post.text %></td>
+            <td><%= post.user.nickname %></td>
+            <td><%= post.created_at.to_s(:datetime_base) %></td>
+            <td><%= link_to "詳細" , post, class: 'btn btn-outline-info' %></td>
+            <td><%= link_to "削除" , post, class: 'btn btn-outline-info', method: :delete, data: {confirm: "投稿記事を削除しますか？", cancel: "キャンセル", commit: "削除する", title: "削除の確認"} %></td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
