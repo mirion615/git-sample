@@ -8,5 +8,8 @@ Rails.application.routes.draw do
   devise_for :users
  root to: "posts#index"
 
+  get 'chat/:id', to: 'chats#show', as: 'chat'
+
   resources :users
+  resources :chats, only: [:create]
 end
