@@ -5,6 +5,11 @@
    <%= current_user.nickname %>さん
      <li><%= link_to "マイページ", root_path, class: "nickname" %></li>
       <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"logout" %></li>
+        <% @users.each do |user| %>
+          <% if user.present? %>
+            <li><%= link_to user.nickname, user_path(user.id), method: :get %></li>
+          <% end %>
+        <% end %>
                  <% else %>
                       <li><%= link_to 'ログイン', new_user_session_path, class:"sign-in"%></li>
                       <li><%= link_to '新規登録', new_user_registration_path, class:"sign-up"%></li> 
