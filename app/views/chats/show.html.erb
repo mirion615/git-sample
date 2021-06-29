@@ -1,6 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-6">
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %>
             <h2>CHAT WITH <%= @user.nickname %></h2>
 
             <table class="message table">
