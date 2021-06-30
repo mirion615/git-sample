@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2021_06_28_075630) do
 
   create_table "posts", charset: "utf8", force: :cascade do |t|
@@ -20,7 +19,6 @@ ActiveRecord::Schema.define(version: 2021_06_28_075630) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
-
 
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "email", default: "", null: false

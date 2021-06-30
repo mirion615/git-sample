@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
+    redirect_to root_path
   end
 
   def show
@@ -31,7 +32,6 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to root_path
   end
 
   # def search
@@ -45,3 +45,5 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+  end
+end
