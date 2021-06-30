@@ -1,5 +1,9 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+
   def index
+    @posts = Post.includes(:user).order('created_at DESC')
   end
 
   def new
@@ -8,7 +12,8 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-   redirect_to root_path
+
+    redirect_to root_path
   end
 
   def show
@@ -28,7 +33,6 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to root_path
   end
 
   # def search
@@ -43,4 +47,5 @@ class PostsController < ApplicationController
   def set_post
     @post = Post.find(params[:id])
   end
+
 end

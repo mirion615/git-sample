@@ -1,14 +1,17 @@
-<h1>Posts#index</h1>
-
-
 <% if user_signed_in? %> 
-   <%= current_user.nickname %>さん
-     <li><%= link_to "マイページ", root_path, class: "nickname" %></li>
-      <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"logout" %></li>
-                 <% else %>
-                      <li><%= link_to 'ログイン', new_user_session_path, class:"sign-in"%></li>
-                      <li><%= link_to '新規登録', new_user_registration_path, class:"sign-up"%></li> 
-                  <% end %>
+  <%= current_user.nickname %>さん
+  <ul>
+    <li><%= link_to "マイページ", root_path, class: "nickname" %></li>
+    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"logout" %></li>
+    <li><%= link_to "新規投稿", new_post_path %></li>
+  </ul>
+<% else %>
+  <ul>
+    <li><%= link_to 'ログイン', new_user_session_path, class:"sign-in"%></li>
+    <li><%= link_to '新規登録', new_user_registration_path, class:"sign-up"%></li> 
+  </ul>
+<% end %>
+
 <div class="d-flex align-items-center">
     <h1>投稿一覧</h1>
 </div>
@@ -28,9 +31,12 @@
             <td><%= post.text %></td>
             <td><%= post.user.nickname %></td>
             <td><%= post.created_at.to_s(:datetime_base) %></td>
-            <td><%= link_to "詳細" , '#' %></td>
+
+            <td><%= link_to "詳細" , post_path(post.id), method: :get %></td>
+
             <td><%= button_to "削除" , post_path(post.id), method: :delete %></td>
         </tr>
       <% end %>
   </tbody>
+
 </table>
