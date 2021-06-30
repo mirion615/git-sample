@@ -12,8 +12,6 @@
   </ul>
 <% end %>
 
-
-
 <div class="d-flex align-items-center">
     <h1>投稿一覧</h1>
 </div>
@@ -33,9 +31,12 @@
             <td><%= post.text %></td>
             <td><%= post.user.nickname %></td>
             <td><%= post.created_at.to_s(:datetime_base) %></td>
+
             <td><%= link_to "詳細" , post_path(post.id), method: :get %></td>
+
             <td><%= button_to "削除" , post_path(post.id), method: :delete %></td>
         </tr>
       <% end %>
   </tbody>
+
 </table>

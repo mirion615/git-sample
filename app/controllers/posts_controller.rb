@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
+
     redirect_to root_path
   end
 
@@ -46,4 +47,5 @@ class PostsController < ApplicationController
   def set_post
     @post = Post.find(params[:id])
   end
+
 end
