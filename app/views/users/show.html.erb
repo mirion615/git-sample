@@ -1,20 +1,12 @@
-<% if user_signed_in? %> 
-  <%= current_user.nickname %>さん
-  <ul>
-    <li><%= link_to "マイページ", "/users/#{current_user.id}", class: "nickname" %></li>
-    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"logout" %></li>
-    <li><%= link_to "新規投稿", new_post_path %></li>
-  </ul>
-<% else %>
-  <ul>
-    <li><%= link_to 'ログイン', new_user_session_path, class:"sign-in"%></li>
-    <li><%= link_to '新規登録', new_user_registration_path, class:"sign-up"%></li> 
-  </ul>
-<% end %>
-
-<div class="d-flex align-items-center">
-    <h1>投稿一覧</h1>
+<div class="contents s">
+<p>ID<%= @user.id%></p>
+<p>ニックネーム<%= @user.nickname %>さん</p>
+<p>性別<%= @user.gender %></p>
+<p>年齢<%= @user.age%></p>
 </div>
+<div class="contents u">
+  <p><%= @nickname %>さんの投稿一覧</p>
+  </div>
 <table class="table table-bordered border-primary table-hover table-sm posts_table">
   <thead class="thead-dark">
     <tr>
@@ -38,5 +30,8 @@
         </tr>
       <% end %>
   </tbody>
-
 </table>
+  <div><%= link_to"トップページへ", root_path%></div>
+  <%if current_user.id? && @user.id %>
+    <%= link_to "プロフィール編集", root_path%>
+  <%end%>
