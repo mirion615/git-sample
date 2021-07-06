@@ -1,7 +1,7 @@
 <% if user_signed_in? %> 
   <%= current_user.nickname %>さん
   <ul>
-    <li><%= link_to "マイページ", root_path, class: "nickname" %></li>
+    <li><%= link_to "マイページ", "/users/#{current_user.id}", class: "nickname" %></li>
     <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"logout" %></li>
     <li><%= link_to "新規投稿", new_post_path %></li>
   </ul>
