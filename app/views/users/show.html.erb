@@ -1,3 +1,4 @@
+
 <div class="contents s">
 <p>ID<%= @user.id%></p>
 <p>ニックネーム<%= @user.nickname %>さん</p>
@@ -35,3 +36,8 @@
   <%if current_user.id? && @user.id %>
     <%= link_to "プロフィール編集", root_path%>
   <%end%>
+
+<% if current_user != @user %>
+  <%= link_to 'Begin Chat', chat_path(@user.id) %>
+<% end %> 
+

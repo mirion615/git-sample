@@ -13,4 +13,6 @@ class User < ApplicationRecord
     enum gender: { man: 0, woman: 1}
     has_many :posts
 
+  has_many :user_rooms, dependent: :destroy
+  has_many :chats, dependent: :destroy
 end

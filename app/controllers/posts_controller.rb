@@ -3,6 +3,9 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
+    if user_signed_in?
+      @users = User.where.not(id: current_user.id)
+    end
     @posts = Post.includes(:user).order('created_at DESC')
   end
 
@@ -33,6 +36,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
+    redirect_to root_path
   end
 
   # def search
